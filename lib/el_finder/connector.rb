@@ -87,7 +87,7 @@ module ElFinder
       hash += '==' if len == 1 or len == 2
       hash += '='  if len == 3
 
-      pathname = @root + Base64.urlsafe_decode64(hash)
+      pathname = @root + Base64.urlsafe_decode64(hash).force_encoding('UTF-8')
     rescue ArgumentError => e
       if e.message == 'invalid base64'
         nil
